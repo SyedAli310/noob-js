@@ -1,8 +1,10 @@
 const showArea = document.querySelector("#show-area");
 const popSound = document.getElementById("pop");
 
+let noobsCount = 0;
 // const noobShow = `<div class="rounded-lg p-2 random" >noob</div>`;
 
+updateNoobCount();
 const BgCollection = [
   "#455954",
   "#9d7463",
@@ -21,8 +23,17 @@ const BgCollection = [
   "#60371E",
 ];
 
+// generate random color
+function getRandomColor() {
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += Math.floor(Math.random() * 10);
+  }
+  return color;
+}
+
 function changeBg(el) {
-  var randomBg = BgCollection[Math.floor(Math.random() * BgCollection.length)];
+  var randomBg = getRandomColor();
   $(el).css("background", randomBg);
 }
 
@@ -31,7 +42,7 @@ function playPopSound() {
 }
 
 function randomPos(el) {
-  var randomBg = BgCollection[Math.floor(Math.random() * BgCollection.length)];
+  var randomBg = getRandomColor();
   var operator = Math.random();
   if (operator < 0.5) {
     operator = "-";
@@ -55,13 +66,18 @@ function randomPos(el) {
   }, 750);
 }
 
+function updateNoobCount() {
+  document.querySelector("#noob-count").innerHTML = noobsCount;
+}
 function showRandomNoob() {
+  ++noobsCount;
+  updateNoobCount();
   const noobShow = document.createElement("div");
   noobShow.classList.add("random");
   randomPos(noobShow);
 
   setTimeout(() => {
-    noobShow.innerHTML = `<h3>ritesh!</h3>`;
+    noobShow.innerHTML = `<h3>noob!</h3>`;
     showArea.appendChild(noobShow);
     changeBg(noobShow);
   }, 100);
@@ -72,8 +88,9 @@ $("#appear-btn").on("click", () => {
   $("#clear-btn").css("display", "inline-block");
   $("#stop-btn").css("display", "inline-block");
   $("#appear-btn").text("Claim more");
+  $(".random h3").css("animation-play-state", "running");
 
-  let count = 100;
+  let count = 250;
   let interval = setInterval(() => {
     if (count > 0) {
       showRandomNoob();
@@ -85,18 +102,21 @@ $("#appear-btn").on("click", () => {
     }
     // randomPos($('.random'))
     //tiltNoobs()
-  }, 100);
+  }, 10);
 
   $("#stop-btn").on("click", () => {
     clearInterval(interval);
     setTimeout(() => {
       tiltNoobs();
     }, 1000);
+    $(".random h3").css("animation-play-state", "paused");
   });
 });
 
 $("#clear-btn").on("click", () => {
   showArea.innerHTML = ``;
+  noobsCount = 0;
+  updateNoobCount();
 });
 
 if (localStorage.getItem("volume") == null) {

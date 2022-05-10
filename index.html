@@ -24,31 +24,46 @@
 
     <link rel="stylesheet" href="style.css" />
 
-    <link rel="icon" href="./img/logo.png" type="image/icon type">
+    <link rel="icon" href="./img/logo.png" type="image/icon type" />
   </head>
 
   <title>Noob.js</title>
 
-  <body style="height: 100vh !important; position: relative;">
-
-    
-    <main class="m-3  m-md-4 m-sm-4 h-100" >
-        
-        <div class="header mb-2 d-flex justify-content-between align-items-center">
-            <a href="./"><img src="./img/logo.png" alt="Noob" style="height: 50px; width: 50px;"></a>
-            <button class="btn btn-sm" value="on" id="volume-btn"><i class="text-success fas fa-volume-up fa-2x"></i></button>
+  <body style="height: 100vh !important; position: relative">
+    <main class="m-3 m-md-4 m-sm-4 h-100">
+      <div
+        class="header mb-2 d-flex justify-content-between align-items-center"
+      >
+        <a href="./"
+          ><img
+            src="./img/logo.png"
+            alt="Noob"
+            style="height: 50px; width: 50px"
+        /></a>
+        <div style="color: white">
+          Noob Count:
+          <span id="noob-count"></span>
         </div>
-        <div class="rounded bg-transparent shadow-lg" id="show-area"></div>
+        <button class="btn btn-sm" value="on" id="volume-btn">
+          <i class="text-success fas fa-volume-up fa-2x"></i>
+        </button>
+      </div>
+      <div class="rounded bg-transparent shadow-lg" id="show-area"></div>
 
-        <div class="buttons text-center">
-            <button class="btn btn-primary  m-2" id="appear-btn">Click to claim gift</button>
-            <button class="btn btn-danger  m-2" id="stop-btn"><i class="fas fa-stop-circle"></i> Stop</button>
-            <button class="btn btn-danger  m-2" id="clear-btn"><i class="far fa-trash-alt"></i> Clear</button>
-        </div>
+      <div class="buttons text-center">
+        <button class="btn btn-primary m-2" id="appear-btn">
+          Click to claim gift
+        </button>
+        <button class="btn btn-danger m-2" id="stop-btn">
+          <i class="fas fa-stop-circle"></i> Stop
+        </button>
+        <button class="btn btn-danger m-2" id="clear-btn">
+          <i class="far fa-trash-alt"></i> Clear
+        </button>
+      </div>
     </main>
 
     <audio id="pop" src="./audio/miss.mp3"></audio>
-
   </body>
 
   <!-- jQuery library -->
